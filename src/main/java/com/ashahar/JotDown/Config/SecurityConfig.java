@@ -30,9 +30,8 @@ public class SecurityConfig {
 
         http.csrf(customizer -> customizer.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/register","/login/oauth2/code/google").permitAll()
+                        .requestMatchers("/register").permitAll()
                         .anyRequest().authenticated())
-                .oauth2Login(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
